@@ -73,6 +73,18 @@ func testBase(t *testing.T, function func([]int) []int) {
 	}
 }
 
-func TestBubble(t *testing.T) {
-	testBase(t, Bubble)
+func TestBubbleSort(t *testing.T) {
+	testBase(t, BubbleSort)
+}
+
+func TestHeapSort(t *testing.T) {
+	testBase(t, HeapSort)
+}
+
+func TestQuickSort(t *testing.T) {
+	testBase(t, QuickSort)
+}
+
+func TestMergeSort(t *testing.T) {
+	testBase(t, MergeSort)
 }
