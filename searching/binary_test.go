@@ -1,6 +1,9 @@
 package searching
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestBinarySearch(t *testing.T) {
 	for _, test := range searchTests {
@@ -64,4 +67,23 @@ var uppperBoundTests = []searchTest{
 	{[]int{1, 4, 5, 6, 7, 10}, 25, -1, ErrNotFound, "Absent"},
 	//Empty slice
 	{[]int{}, 2, -1, ErrNotFound, "Empty"},
+}
+
+func Test_calcsqrt2(t *testing.T) {
+	// tests := []struct {
+	// 	name string
+	// 	want float64
+	// }{
+	// 	// TODO: Add test cases.
+	// }
+	// for _, tt := range tests {
+	// 	t.Run(tt.name, func(t *testing.T) {
+	// 		if got := calcsqrt2(); got != tt.want {
+	// 			t.Errorf("calcsqrt2() = %v, want %v", got, tt.want)
+	// 		}
+	// 	})
+	// }
+
+	res := Calcsqrt2()
+	fmt.Println(res)
 }

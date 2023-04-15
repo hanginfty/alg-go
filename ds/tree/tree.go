@@ -41,6 +41,20 @@ func NewTree(ary []int) Tree {
 	return nodes[0]
 }
 
+func (tree Tree) PreOrder() []int {
+	var res []int
+	if tree == nil {
+		return res
+	}
+
+	res = append(res, tree.Val)
+
+	res = append(res, tree.Left.PreOrder()...)
+	res = append(res, tree.Right.PreOrder()...)
+
+	return res
+}
+
 func (tree Tree) LevelOrder() [][]int {
 	if tree == nil {
 		return [][]int{}
@@ -85,4 +99,66 @@ func (tree Tree) Height() int {
 	} else {
 		return 1 + r
 	}
+}
+
+func (tree Tree) IsLeaf() bool {
+	return tree.Left == nil && tree.Right == nil
+}
+
+func (tree Tree) Count() int {
+	if tree == nil {
+		return 0
+	}
+
+	l := tree.Left.Count()
+	r := tree.Right.Count()
+
+	return l + r + 1
+}
+
+func IsSameTree(t1, t2 Tree) bool {
+	if t1 == nil && t2 == nil {
+		return true
+	}
+
+	if t1 == nil || t2 == nil {
+		return false
+	}
+
+	if t1.Val != t2.Val {
+		return false
+	}
+
+	return IsSameTree(t1.Left, t2.Left) && IsSameTree(t1.Right, t2.Right)
+}
+
+func (tree Tree) Flatten() {
+	if tree == nil {
+		return
+	}
+
+	tree.Left.Flatten()
+	tree.Right.Flatten()
+
+	l := tree.Left
+	r := tree.Right
+
+	tree.Left = nil
+	tree.Right = l
+
+	p := tree
+	for p.Right != nil {
+		p = p.Right
+	}
+	p.Right = r
+}
+
+// TODO
+func (tree Tree) Encode() string {
+	return ""
+}
+
+func Decode(s string) Tree {
+
+	return &Node{}
 }
