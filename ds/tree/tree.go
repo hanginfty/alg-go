@@ -152,13 +152,3 @@ func (tree Tree) Flatten() {
 	}
 	p.Right = r
 }
-
-// TODO
-func (tree Tree) Encode() string {
-	return ""
-}
-
-func Decode(s string) Tree {
-
-	return &Node{}
-}
